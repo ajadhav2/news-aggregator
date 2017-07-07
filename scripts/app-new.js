@@ -320,6 +320,8 @@ APP.Main = (function() {
 
   });
 
+  colorizeAndScaleStories();
+
   main.addEventListener('scroll', function() {
 
     var header = $('header');
@@ -327,7 +329,7 @@ APP.Main = (function() {
     var scrollTopCapped = Math.min(70, main.scrollTop);
     var scaleString = 'scale(' + (1 - (scrollTopCapped / 300)) + ')';
 
-    colorizeAndScaleStories();
+    // colorizeAndScaleStories();
 
     header.style.height = (156 - scrollTopCapped) + 'px';
     headerTitles.style.webkitTransform = scaleString;
