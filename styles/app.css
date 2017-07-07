@@ -71,10 +71,12 @@ a {
 }
 
 .header__title-wrapper {
+  will-change: transform;
   position: absolute;
   bottom: 16px;
   -webkit-transform-origin: 0 100%;
           transform-origin: 0 100%;
+
 }
 
 .header__title {
@@ -117,6 +119,7 @@ main {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   z-index: 0;
+  will-change: transform;
 }
 
 main.loading {
