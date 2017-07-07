@@ -112,21 +112,9 @@ APP.Main = (function() {
 
     var storyDetails = $('sd-' + details.id);
 
-    // Wait a little time then show the story details.
-    setTimeout(showStory.bind(this, details.id), 60);
-    // requestAnimationFrame(showStory.bind(this, details.id));
+    // console.log("storyDetails " + storyDetails);
 
-    // Create and append the story. A visual change...
-    // perhaps that should be in a requestAnimationFrame?
-    // And maybe, since they're all the same, I don't
-    // need to make a new element every single time? I mean,
-    // it inflates the DOM and I can only see one at once.
-    if (!storyDetails) {
-
-      if (details.url)
-        details.urlobj = new URL(details.url);
-
-      var comment;
+     var comment;
       var commentsElement;
       var storyHeader;
       var storyContent;
@@ -152,6 +140,47 @@ APP.Main = (function() {
       closeButton.addEventListener('click', hideStory.bind(this, details.id));
 
       var headerHeight = storyHeader.getBoundingClientRect().height;
+
+    // Wait a little time then show the story details.
+    setTimeout(showStory.bind(this, details.id), 60);
+    // requestAnimationFrame(showStory.bind(this, details.id));
+
+    // Create and append the story. A visual change...
+    // perhaps that should be in a requestAnimationFrame?
+    // And maybe, since they're all the same, I don't
+    // need to make a new element every single time? I mean,
+    // it inflates the DOM and I can only see one at once.
+    if (storyDetails) {
+
+      if (details.url)
+        details.urlobj = new URL(details.url);
+
+      // var comment;
+      // var commentsElement;
+      // var storyHeader;
+      // var storyContent;
+
+      // var storyDetailsHtml = storyDetailsTemplate(details);
+      // var kids = details.kids;
+      // var commentHtml = storyDetailsCommentTemplate({
+      //   by: '', text: 'Loading comment...'
+      // });
+
+      // storyDetails = document.createElement('section');
+      // storyDetails.setAttribute('id', 'sd-' + details.id);
+      // storyDetails.classList.add('story-details');
+      // storyDetails.innerHTML = storyDetailsHtml;
+
+      // document.body.appendChild(storyDetails);
+
+      // commentsElement = storyDetails.querySelector('.js-comments');
+      // storyHeader = storyDetails.querySelector('.js-header');
+      // storyContent = storyDetails.querySelector('.js-content');
+
+      // var closeButton = storyDetails.querySelector('.js-close');
+      // closeButton.addEventListener('click', hideStory.bind(this, details.id));
+
+      // var headerHeight = storyHeader.getBoundingClientRect().height;
       storyContent.style.paddingTop = headerHeight + 'px';
 
       if (typeof kids === 'undefined')
