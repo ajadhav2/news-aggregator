@@ -61,45 +61,47 @@ APP.Main = (function() {
    * that should really be handled more delicately, and
    * probably in a requestAnimationFrame callback.
    */
-  function onStoryData (key, details) {
+  function onStoryData (key, j,details) {
 
     // This seems odd. Surely we could just select the story
     // directly rather than looping through all of them.
     var storyElements = document.querySelectorAll('.story');
 
-    console.log("key " + key + " details " + details);
+    // console.log("key " + key + " details " + details);
 
-    for (var i = 0; i < storyElements.length; i++) {
+    // for (var i = 0; i < storyElements.length; i++) {
 
-      if (storyElements[i].getAttribute('id') === 's-' + key) {
+    //   if (storyElements[i].getAttribute('id') === 's-' + key) {
 
-        console.log("i " + i);
-        details.time *= 1000;
-        var story = storyElements[i];
-        var html = storyTemplate(details);
-        story.innerHTML = html;
-        story.addEventListener('click', onStoryClick.bind(this, details));
-        story.classList.add('clickable');
+    //     console.log("i " + i);
+    //     details.time *= 1000;
+    //     var story = storyElements[i];
+    //     var html = storyTemplate(details);
+    //     console.log("j " + j);
+    //     story.innerHTML = html;
+    //     story.addEventListener('click', onStoryClick.bind(this, details));
+    //     story.classList.add('clickable');
 
-        // Tick down. When zero we can batch in the next load.
-        storyLoadCount--;
+    //     // Tick down. When zero we can batch in the next load.
+    //     storyLoadCount--;
 
-      }
+    //   }
+    // }
+    if (storyElements[j].getAttribute('id') === 's-' + key) {
+
+      // console.log("i " + i);
+      details.time *= 1000;
+      var story = storyElements[j];
+      var html = storyTemplate(details);
+      // console.log("j " + j);
+      story.innerHTML = html;
+      story.addEventListener('click', onStoryClick.bind(this, details));
+      story.classList.add('clickable');
+
+      // Tick down. When zero we can batch in the next load.
+      storyLoadCount--;
+
     }
-      // if (storyElements[details].getAttribute('id') === 's-' + key) {
-
-      //   console.log("storyElements[details].getAttribute('id')  " + storyElements[details].getAttribute('id'));
-      //   details.time *= 1000;
-      //   var story = storyElements[details];
-      //   var html = storyTemplate(details);
-      //   story.innerHTML = html;
-      //   story.addEventListener('click', onStoryClick.bind(this, details));
-      //   story.classList.add('clickable');
-
-      //   // Tick down. When zero we can batch in the next load.
-      //   storyLoadCount--;
-
-      // }
 
     // Colorize on complete.
     if (storyLoadCount === 0)
@@ -401,7 +403,7 @@ APP.Main = (function() {
       });
       main.appendChild(story);
 
-      APP.Data.getStoryById(stories[i], onStoryData.bind(this, key));
+      APP.Data.getStoryById(stories[i], onStoryData.bind(this, key,i));
     }
 
     storyStart += count;
