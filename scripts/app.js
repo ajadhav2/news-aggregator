@@ -67,10 +67,13 @@ APP.Main = (function() {
     // directly rather than looping through all of them.
     var storyElements = document.querySelectorAll('.story');
 
+    console.log("key " + key + " details " + details);
+
     for (var i = 0; i < storyElements.length; i++) {
 
       if (storyElements[i].getAttribute('id') === 's-' + key) {
 
+        console.log("i " + i);
         details.time *= 1000;
         var story = storyElements[i];
         var html = storyTemplate(details);
@@ -83,6 +86,20 @@ APP.Main = (function() {
 
       }
     }
+      // if (storyElements[details].getAttribute('id') === 's-' + key) {
+
+      //   console.log("storyElements[details].getAttribute('id')  " + storyElements[details].getAttribute('id'));
+      //   details.time *= 1000;
+      //   var story = storyElements[details];
+      //   var html = storyTemplate(details);
+      //   story.innerHTML = html;
+      //   story.addEventListener('click', onStoryClick.bind(this, details));
+      //   story.classList.add('clickable');
+
+      //   // Tick down. When zero we can batch in the next load.
+      //   storyLoadCount--;
+
+      // }
 
     // Colorize on complete.
     if (storyLoadCount === 0)
