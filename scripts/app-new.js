@@ -86,7 +86,7 @@ APP.Main = (function() {
 
     // Colorize on complete.
     if (storyLoadCount === 0)
-      colorizeAndScaleStories();
+      // colorizeAndScaleStories();
   }
 
   function onStoryClick(details) {
@@ -345,7 +345,8 @@ APP.Main = (function() {
     var loadThreshold = (main.scrollHeight - main.offsetHeight -
         LAZY_LOAD_THRESHOLD);
     if (main.scrollTop > loadThreshold)
-      loadStoryBatch();
+      // loadStoryBatch();
+      requestAnimationFrame(loadStoryBatch);
   });
 
   function loadStoryBatch() {
