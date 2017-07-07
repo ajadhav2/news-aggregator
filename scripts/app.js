@@ -347,6 +347,8 @@ APP.Main = (function() {
 
   function loadStoryBatch() {
 
+    console.log("AAAAA");
+
     if (storyLoadCount > 0)
       return;
 
